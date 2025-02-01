@@ -14,7 +14,7 @@ export default function Home() {
             <div className="bg-white px-[120px] py-[30px]">
                 <NowBolmal></NowBolmal>
             </div>
-            <div className="bg-[#FAFAFA] px-[120px]">
+            <div className="bg-[#FAFAFA] px-[120px] pt-[30px]">
                 <WeeklyTicke></WeeklyTicke>
             </div>
         </div>
