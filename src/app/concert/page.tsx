@@ -1,5 +1,6 @@
 'use client';
 
+import DropDown from '@/components/dropdown/dropDown';
 import { Concert } from '@/components/now-bolmal/concertRecommend';
 import Ticket from '@/components/ticket';
 import { useQuery } from '@tanstack/react-query';
@@ -10,10 +11,13 @@ async function getConcertInfo(page: number) {
     return res.json();
 }
 
+export type SortType = 'latest' | 'popularity' | 'near';
+
 export default function ConcertPage() {
     const [pageNumber, setPageNumber] = useState<number>(1);
     const [isSelectedNC, setIsSelectedNC] = useState<boolean>(false);
     const [isSelectedKC, setIsSelectedKC] = useState<boolean>(false);
+    const [sortType, setSortType] = useState<SortType>('near');
     const { data, isLoading, isError } = useQuery({
         queryKey: ['pagenatedNum', pageNumber],
         queryFn: () => getConcertInfo(pageNumber), // 실제 API 호출에는 isSelectedNC, isSelectKC, 드롭다운 정렬 기준도 포함되어야 할듯
@@ -49,7 +53,7 @@ export default function ConcertPage() {
                         국내 콘서트
                     </button>
                 </div>
-                <div>드롭다운</div>
+                <DropDown sortType={sortType} setSortType={setSortType}></DropDown>
             </div>
             <div className="grid grid-cols-5 gap-y-[30px] gap-x-[0.55vw]">
                 {data.concerts.map((ticket: Concert) => (
