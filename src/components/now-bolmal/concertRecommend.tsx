@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import { useEffect, useState } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 
-interface Concert {
+export interface Concert {
     id: number;
     url: string;
     tag: string;
