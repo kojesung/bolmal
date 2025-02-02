@@ -14,6 +14,7 @@ export default function NowBolmal() {
             <div>
                 <ConcertRecommend isLoggedIn={isLoggedIn}></ConcertRecommend>
             </div>
+            <div className="mt-[85px] font-[700] text-[25px]">이번주 가장 인기있는 티켓</div>
         </div>
     );
 }
