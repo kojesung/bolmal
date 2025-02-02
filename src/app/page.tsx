@@ -2,6 +2,7 @@ import Ad from '@/components/ad';
 import NowBolmal from '@/components/now-bolmal/now-bolmal';
 
 import Profile from '@/components/profile/profile';
+import WeeklyTicke from '@/components/weekly-ticket/weekly-ticket';
 
 export default function Home() {
     return (
@@ -12,6 +13,9 @@ export default function Home() {
             </div>
             <div className="bg-white px-[120px] py-[30px]">
                 <NowBolmal></NowBolmal>
+            </div>
+            <div className="bg-[#FAFAFA] px-[120px] pt-[30px]">
+                <WeeklyTicke></WeeklyTicke>
             </div>
         </div>
     );
