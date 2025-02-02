@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Navigation from '@/components/nav/navigation';
 import AuthProvider from '@/components/providers/SessionProvier';
+import QueryProvider from '@/components/providers/QueryProvider.tsx';
 
 export const metadata: Metadata = {
     title: '볼래말래',
@@ -16,10 +17,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <AuthProvider>
-                    <Navigation></Navigation>
-                    {children}
-                </AuthProvider>
+                <QueryProvider>
+                    <AuthProvider>
+                        <Navigation></Navigation>
+                        {children}
+                    </AuthProvider>
+                </QueryProvider>
             </body>
         </html>
     );
