@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
+import testUrl from '../../../../public/ㅂㄹㅁㄹ.svg';
 
 const dummyData = Array.from({ length: 100 }, (_, i) => ({
     id: i + 1,
-    title: `콘서트 ${i + 1}`,
-    date: '2025.01.14',
-    time: '8PM',
-    venue: 'KSPO DOME',
+    // title: `콘서트 ${i + 1}`,
+    // date: '2025.01.14',
+    // time: '8PM',
+    // venue: 'KSPO DOME',
     tag: i % 2 === 0 ? '팬클럽 선예매' : '1차 티켓오픈',
-    imageUrl: '/dummy-image.jpg',
+    url: testUrl,
 }));
 
 export async function GET(request: NextRequest) {

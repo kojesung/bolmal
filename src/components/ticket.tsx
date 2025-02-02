@@ -1,12 +1,11 @@
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { Concert } from './now-bolmal/concertRecommend';
 
 interface TicketProps {
     concert: Concert;
-    test1: StaticImageData;
 }
 
-export default function Ticket({ concert, test1 }: TicketProps) {
+export default function Ticket({ concert }: TicketProps) {
     return (
         <div className="flex flex-col items-center">
             <Image
@@ -16,7 +15,7 @@ export default function Ticket({ concert, test1 }: TicketProps) {
             ></Image>
             <div className="w-[204px] mt-[20px]">
                 <div className="py-[9px] px-[0.69vw] border-primary border-[2px] rounded-[10px] w-[9vw] mb-[10px] flex gap-[7px]">
-                    <Image className="w-[20px] h-[20px]" src={test1} alt="시간"></Image>
+                    <Image className="w-[20px] h-[20px]" src={concert.url} alt="시간"></Image>
                     <div className="text-[15px] font-[700] text-primary">{concert.tag}</div>
                 </div>
                 <div className="mb-[6px] text-[20px] font-[700] text-primary">2024.01.09(목) 12PM</div>

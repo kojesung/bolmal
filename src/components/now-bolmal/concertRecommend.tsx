@@ -83,7 +83,7 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                 >
                     {concerts.map((concert) => (
                         <SwiperSlide key={concert.id} className="w-[20%]">
-                            <Ticket concert={concert} test1={test1}></Ticket>
+                            <Ticket concert={concert}></Ticket>
                         </SwiperSlide>
                     ))}
                 </Swiper>
