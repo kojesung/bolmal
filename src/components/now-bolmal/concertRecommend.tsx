@@ -1,10 +1,10 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import test1 from '../../../public/ㅂㄹㅁㄹ.svg';
-import Image from 'next/image';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css/navigation';
 import { useEffect, useState } from 'react';
 import { Swiper as SwiperType } from 'swiper';
+import Ticket from '../ticket';
 
 export interface Concert {
     id: number;
@@ -83,24 +83,7 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                 >
                     {concerts.map((concert) => (
                         <SwiperSlide key={concert.id} className="w-[20%]">
-                            <div className="flex flex-col items-center">
-                                <Image
-                                    className="w-[204px] h-[272px] bg-black rounded-[10px]"
-                                    src={concert.url}
-                                    alt={concert.id.toString()}
-                                ></Image>
-                                <div className="w-[204px] mt-[20px]">
-                                    <div className="py-[9px] px-[0.69vw] border-primary border-[2px] rounded-[10px] w-[9vw] mb-[10px] flex gap-[7px]">
-                                        <Image className="w-[20px] h-[20px]" src={test1} alt="시간"></Image>
-                                        <div className="text-[15px] font-[700] text-primary">{concert.tag}</div>
-                                    </div>
-                                    <div className="mb-[6px] text-[20px] font-[700] text-primary">
-                                        2024.01.09(목) 12PM
-                                    </div>
-                                    <div className="text-black text-[18px] font-[700]">2025 JUNIEL CONert..</div>
-                                    <div className="text-[#AEAEAE] text-[15px] font-[500]">2025.01.25</div>
-                                </div>
-                            </div>
+                            <Ticket concert={concert} test1={test1}></Ticket>
                         </SwiperSlide>
                     ))}
                 </Swiper>
