@@ -9,10 +9,17 @@ interface DropDownProps {
 export default function DropDown({ sortType, setSortType }: DropDownProps) {
     const [view, setView] = useState<boolean>(false); // 드롭다운 눌렀는지 안 눌렀는지 판단하는 상태
     const dropdownRef = useRef<HTMLDivElement>(null);
+
+    const sortTypeText = {
+        near: '티켓오픈 가까운 순',
+        popularity: '인기순',
+        latest: '최신 등록순',
+    };
+
     return (
         <div ref={dropdownRef}>
             <ul onClick={() => setView(true)}>
-                <div>{sortType}</div>
+                <div>{sortTypeText[sortType]} 🔻</div>
                 {view && (
                     <>
                         <li>
