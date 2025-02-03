@@ -20,7 +20,7 @@ export default function ConcertPage() {
     const [sortType, setSortType] = useState<SortType>('near');
     const { data, isLoading, isError } = useQuery({
         queryKey: ['pagenatedNum', pageNumber],
-        queryFn: () => getConcertInfo(pageNumber), // 실제 API 호출에는 isSelectedNC, isSelectKC, 드롭다운 정렬 기준도 포함되어야 할듯
+        queryFn: () => getConcertInfo(pageNumber), // 실제 API 호출에는 isSelectedNC, isSelectKC, sortType도 포함해야함
     });
 
     if (isLoading) return <div>로딩중...</div>;
