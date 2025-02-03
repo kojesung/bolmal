@@ -17,11 +17,17 @@ export default function DropDown({ sortType, setSortType }: DropDownProps) {
     };
 
     return (
-        <div ref={dropdownRef}>
-            <ul onClick={() => setView(true)}>
-                <div>{sortTypeText[sortType]} 🔻</div>
+        <div ref={dropdownRef} className="relative">
+            <ul
+                onClick={() => {
+                    setView((prev) => !prev);
+                }}
+            >
+                <div className="w-[10.62vw] h-[38px] rounded-[10px] border-primary border-[2px] bg-white flex justify-center items-center mb-[10px] text-primary font-[700] text-[15px]">
+                    {sortTypeText[sortType]} 🔻
+                </div>
                 {view && (
-                    <>
+                    <div className="absolute z-50 bg-white">
                         <li>
                             <button
                                 onClick={(e) => {
@@ -55,7 +61,7 @@ export default function DropDown({ sortType, setSortType }: DropDownProps) {
                                 최신 등록 순
                             </button>
                         </li>
-                    </>
+                    </div>
                 )}
             </ul>
         </div>
