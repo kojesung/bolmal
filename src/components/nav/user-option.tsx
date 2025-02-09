@@ -1,4 +1,5 @@
 'use client';
+// 빌드 테스트
 
 import { useStore } from '@/hooks/useUserInfo';
 import { signOut, useSession } from 'next-auth/react';
