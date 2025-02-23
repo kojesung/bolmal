@@ -19,8 +19,9 @@ export default function Ticket({ concert }: TicketProps) {
                 height={272}
             ></Image>
             <div className="w-[204px] mt-[20px] flex flex-col">
-                <div className="py-[9px] px-[0.69vw] border-primary border-[2px] rounded-[10px] w-[9vw] mb-[10px] flex gap-[7px]">
-                    <Image src={concert.posterUrl} alt="시간" width={20} height={20}></Image>
+                <div className="p-[10px] border-primary border-[2px] rounded-[10px] w-[123px] mb-[10px] flex gap-[7px]">
+                    <span className="w-[20px] h-[20px]">⏰</span>
+                    {/* <Image src={concert.posterUrl} alt="시간" width={20} height={20}></Image> */}
                     <div className="text-[15px] font-[700] text-primary">
                         {concert.concertTicketRoundDTOList[0].ticket_round}
                     </div>

@@ -59,7 +59,7 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                     className="absolute left-[-2%] top-[136px] -translate-y-1/2 w-[50px] h-[50px] rounded-[50%] z-50 bg-white shadow-[0_0_10px_rgba(99,99,99,0.2)]"
                     onClick={handlePrev}
                 >
-                    {'<'}
+                    ＜
                 </button>
                 <Swiper
                     modules={[Autoplay]}
@@ -67,16 +67,14 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                     loop={true}
                     slidesPerView={5}
                     onSwiper={setSwiper}
-                    spaceBetween={50}
-                    className="w-full flex justify-between"
+                    spaceBetween={0}
+                    className="w-full"
                 >
                     {concerts.map((concert) => (
-                        <SwiperSlide
-                            onClick={() => router.push(`concert/${concert.id}`)}
-                            key={concert.id}
-                            className="w-[20%]"
-                        >
-                            <Ticket concert={concert}></Ticket>
+                        <SwiperSlide key={concert.id} className="w-[20%] !flex !justify-center">
+                            <div onClick={() => router.push(`concert/${concert.id}`)} className="w-[234px] p-[15px]">
+                                <Ticket concert={concert}></Ticket>
+                            </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>
@@ -84,7 +82,7 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                     className="absolute right-[-2%] top-[136px] -translate-y-1/2 w-[50px] h-[50px] bg-white shadow-[0_0_10px_rgba(99,99,99,0.2)] rounded-[50%] z-50"
                     onClick={handleNext}
                 >
-                    {'>'}
+                    ＞
                 </button>
             </div>
         </div>
