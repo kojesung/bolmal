@@ -62,6 +62,14 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                     ＜
                 </button>
                 <Swiper
+                    breakpoints={{
+                        1024: {
+                            slidesPerView: 5,
+                        },
+                        1600: {
+                            slidesPerView: 6,
+                        },
+                    }}
                     modules={[Autoplay]}
                     autoplay={{ delay: 3000 }}
                     loop={true}
