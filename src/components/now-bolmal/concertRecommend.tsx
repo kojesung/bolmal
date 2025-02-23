@@ -14,11 +14,13 @@ interface ConcertDate {
 
 export interface Concert {
     id: number;
-    postUrl: string;
-    ticket_round: string;
-    ticket_open_date?: string;
-    concertName?: string;
-    concertDate?: ConcertDate;
+    posterUrl: string;
+    concertTicketRoundDTOList: {
+        ticket_round: string;
+        ticket_open_date: string;
+    }[];
+    concertName: string;
+    concertDate: ConcertDate;
 }
 
 interface RecommendSwiperProps {

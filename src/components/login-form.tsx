@@ -31,7 +31,7 @@ export default function LoginForm() {
         router.push('/sign-up');
     };
 
-    // const setUserState = useStore((state) => state.setUserState); // 이거 나중에 불러와야된다 유저 정보 저장할 때!
+    const setUserState = useStore((state) => state.setUserState);
     const userName = useStore((state) => state.userInfo.name);
     useEffect(() => {
         if (userName) {
@@ -59,15 +59,15 @@ export default function LoginForm() {
 
             if (response.code === 'COMMON200') {
                 // 성공 코드 확인
-                // setUserState(
-                //     response.result.id,
-                //     response.result.name,
-                //     response.result.onCommingDate,
-                //     response.result.alarmTicketCnt,
-                //     response.result.zzimTicketCnt,
-                //     response.result.isSubscribe,
-                //     response.result.imgUrl
-                // );
+                setUserState(
+                    response.result.id,
+                    response.result.name,
+                    response.result.onCommingDate,
+                    response.result.alarmTicketCnt,
+                    response.result.zzimTicketCnt,
+                    response.result.isSubscribe,
+                    response.result.imgUrl
+                );
                 router.push('/');
             } else {
                 console.log('여기2', response.code);
