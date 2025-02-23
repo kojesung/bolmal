@@ -8,13 +8,13 @@ import { useEffect } from 'react';
 import KakaoLogin from './kakao-login';
 import { fetchInstance } from '@/utils/fetchInstance';
 import { getAccessToken } from '@/utils/auth/refresh';
-
 interface HookFormType {
     id: string;
     password: string;
 }
 
 export default function LoginForm() {
+    const userInfo = useStore((state) => state.userInfo);
     const router = useRouter();
     const {
         register,
@@ -38,6 +38,12 @@ export default function LoginForm() {
             console.log('유저이름 :', userName);
         }
     }, [userName]);
+    useEffect(() => {
+        if (userInfo.isLoggedIn) {
+            localStorage.setItem('item', 'true');
+            console.log('🚀 로그인 완료:', userInfo);
+        }
+    }, [userInfo.isLoggedIn]);
 
     const onValid: SubmitHandler<HookFormType> = async () => {
         const id = getValues('id');
@@ -60,15 +66,14 @@ export default function LoginForm() {
             if (response.code === 'COMMON200') {
                 // 성공 코드 확인
                 setUserState(
-                    response.result.id,
+                    response.result.memberId,
                     response.result.name,
-                    response.result.onCommingDate,
-                    response.result.alarmTicketCnt,
-                    response.result.zzimTicketCnt,
-                    response.result.isSubscribe,
-                    response.result.imgUrl
+                    response.result.onComming,
+                    response.result.alarmCount,
+                    response.result.bookmarkCount,
+                    response.result.subcribe,
+                    response.result.imagePath
                 );
-                router.push('/');
             } else {
                 console.log('여기2', response.code);
                 checkIdPw(); // 로그인 실패 처리

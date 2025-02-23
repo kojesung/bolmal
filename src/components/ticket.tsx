@@ -7,7 +7,6 @@ interface TicketProps {
 }
 
 export default function Ticket({ concert }: TicketProps) {
-    console.log(concert);
     return (
         <div className="flex flex-col items-center">
             <Image
