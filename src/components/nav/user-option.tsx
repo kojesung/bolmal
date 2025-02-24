@@ -3,21 +3,24 @@
 import { useStore } from '@/hooks/useUserInfo';
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function UserOption() {
-    const isLoggedIn = useStore((state) => state.userInfo.isLoggedIn);
-    const userName = useStore((state) => state.userInfo.name);
+    const userInfo = useStore((state) => state.userInfo);
     const removeUserState = useStore((state) => state.removeUserState);
+    const isLoggedIn = userInfo.isLoggedIn;
+    const userName = userInfo.name;
     const { status } = useSession();
+    const [wishLogout, setWishLogout] = useState<Boolean>(false);
     useEffect(() => {
-        if (status === 'unauthenticated') {
+        if (status === 'unauthenticated' && wishLogout) {
             // 5. status는 'un~~~'가 되고
             removeUserState(); // 6. 유저 정보까지 삭제
         }
-    }, [status, removeUserState]); // 4. 카카오 로그아웃이 됐으니 status가 바뀌고
+    }, [status]); // 4. 카카오 로그아웃이 됐으니 status가 바뀌고
 
     const logOut = async () => {
+        setWishLogout(true);
         // 1. 로그아웃을 누르면
         if (status === 'authenticated') {
             // 2. 카카오 로그인일 때

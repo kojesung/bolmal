@@ -10,7 +10,8 @@ export default function KakaoLogin() {
     const { data: session } = useSession();
     const handleKakaoLogin = useKakaoLogin();
     const router = useRouter();
-    const onComming = useStore((state) => state.userInfo.onComming);
+    const userInfo = useStore((state) => state.userInfo);
+    const onComming = userInfo.onComming;
     useEffect(() => {
         if (session?.user?.email && session?.user.name) {
             handleKakaoLogin(session.user.name, session.user.email); // 여기서 const response = handle...로 바꾸고 유저정보를 response 안에 반환해주면

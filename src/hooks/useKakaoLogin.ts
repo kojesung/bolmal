@@ -5,7 +5,6 @@ import { useStore } from './useUserInfo';
 
 export default function useKakaoLogin() {
     const setUserState = useStore((state) => state.setUserState);
-    const userState = useStore((state) => state.userInfo);
 
     const handleKakaoLogin = async (name: string, email: string) => {
         //name과 email로 서버에 fetch하는 내용
