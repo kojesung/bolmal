@@ -1,19 +1,26 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import test1 from '../../../public/ㅂㄹㅁㄹ.svg';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css/navigation';
 import { useEffect, useState } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 import Ticket from '../ticket';
 import { useRouter } from 'next/navigation';
+import { fetchInstance } from '@/utils/fetchInstance';
+
+interface ConcertDate {
+    startDate: string;
+    endDate: string;
+}
 
 export interface Concert {
     id: number;
-    url: string;
-    tag: string;
-    // date: string;
-    // title: string;
-    // performDate: string;
+    posterUrl: string;
+    concertTicketRoundDTOList: {
+        ticket_round: string;
+        ticket_open_date: string;
+    }[];
+    concertName: string;
+    concertDate: ConcertDate;
 }
 
 interface RecommendSwiperProps {
@@ -33,31 +40,15 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
     useEffect(() => {
         const fetchConcerts = async () => {
             try {
-                setConcerts([
-                    { id: 1, url: test1, tag: '1차 티켓 오픈' },
-                    { id: 2, url: test1, tag: '팬클럽 선예매' },
-                    { id: 3, url: test1, tag: '팬클럽 선예매' },
-                    { id: 4, url: test1, tag: '1차 티켓 오픈' },
-                    { id: 5, url: test1, tag: '팬클럽 선예매' },
-                    { id: 6, url: test1, tag: '1차 티켓 오픈' },
-                    { id: 7, url: test1, tag: '팬클럽 선예매' },
-                    { id: 8, url: test1, tag: '1차 티켓 오픈' },
-                    { id: 9, url: test1, tag: '팬클럽 선예매' },
-                    { id: 10, url: test1, tag: '1차 티켓 오픈' },
-                ]);
-                // isLoggedIn 상태에 따라 다른 API 엔드포인트 호출
-                // const endpoint = isLoggedIn
-                //     ? '/api/recommendations' // 로그인 됐을 때 호출할 API
-                //     : '/api/popular-concerts'; // 로그인 안됐을 때 호출할 API
-
-                // const response = await fetch(endpoint);
-                // const data = await response.json();
-                // setConcerts(data);
+                const endpoint = isLoggedIn
+                    ? '/home/recommend' // 로그인 안됐을 때 호출할 API
+                    : '/home/recommend'; // 로그인 됐을 때 호출할 API <- 나중에 수정
+                const response = await fetchInstance(endpoint, {}, isLoggedIn);
+                setConcerts(response.result);
             } catch (error) {
                 console.error('실패', error);
             }
         };
-
         fetchConcerts();
     }, [isLoggedIn]);
 
@@ -68,24 +59,30 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                     className="absolute left-[-2%] top-[136px] -translate-y-1/2 w-[50px] h-[50px] rounded-[50%] z-50 bg-white shadow-[0_0_10px_rgba(99,99,99,0.2)]"
                     onClick={handlePrev}
                 >
-                    {'<'}
+                    ＜
                 </button>
                 <Swiper
+                    breakpoints={{
+                        1024: {
+                            slidesPerView: 5,
+                        },
+                        1600: {
+                            slidesPerView: 6,
+                        },
+                    }}
                     modules={[Autoplay]}
                     autoplay={{ delay: 3000 }}
                     loop={true}
                     slidesPerView={5}
                     onSwiper={setSwiper}
-                    spaceBetween={50}
-                    className="w-full flex justify-between"
+                    spaceBetween={0}
+                    className="w-full"
                 >
                     {concerts.map((concert) => (
-                        <SwiperSlide
-                            onClick={() => router.push(`concert/${concert.id}`)}
-                            key={concert.id}
-                            className="w-[20%]"
-                        >
-                            <Ticket concert={concert}></Ticket>
+                        <SwiperSlide key={concert.id} className="w-[20%] !flex !justify-center">
+                            <div onClick={() => router.push(`concert/${concert.id}`)} className="w-[234px] p-[15px]">
+                                <Ticket concert={concert}></Ticket>
+                            </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>
@@ -93,7 +90,7 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                     className="absolute right-[-2%] top-[136px] -translate-y-1/2 w-[50px] h-[50px] bg-white shadow-[0_0_10px_rgba(99,99,99,0.2)] rounded-[50%] z-50"
                     onClick={handleNext}
                 >
-                    {'>'}
+                    ＞
                 </button>
             </div>
         </div>

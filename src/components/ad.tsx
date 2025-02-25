@@ -20,7 +20,6 @@ export default function Ad() {
         { id: '4', url: test1 },
         { id: '5', url: test1 },
     ];
-    console.log('무시해도 됨', activeIdx);
     return (
         <div>
             <div className="w-[62.08vw] h-[343px]">
