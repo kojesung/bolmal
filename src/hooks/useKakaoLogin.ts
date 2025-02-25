@@ -27,8 +27,6 @@ export default function useKakaoLogin() {
             userInfoData.result.subcribe,
             userInfoData.result.imagePath
         );
-        // const response = await fetchInstance('/health', {}, false);
-        // console.log('서버 상태', response);
     };
 
     return handleKakaoLogin;

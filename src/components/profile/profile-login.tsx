@@ -12,6 +12,8 @@ export default function ProfileLogin({ userInfo }: { userInfo: UserInfo }) {
                             className="h-[55px] w-[55px] rounded-[50%] bg-black"
                             src={userInfo.imgUrl ? userInfo.imgUrl : defaultImg}
                             alt="프로필"
+                            width={55}
+                            height={55}
                         ></Image>
                         <div className="py-[5px] ml-[1.38vw]">
                             <div className="text-[18px]">

@@ -4,10 +4,23 @@ import { SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
 import Button from './button';
 import { useRouter } from 'next/navigation';
 import { useStore } from '@/hooks/useUserInfo';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import KakaoLogin from './kakao-login';
 import { fetchInstance } from '@/utils/fetchInstance';
 import { getAccessToken } from '@/utils/auth/refresh';
+
+interface LoginResponse {
+    code: string;
+    result: {
+        memberId: number;
+        name: string;
+        onComming: string | null;
+        alarmCount: number;
+        bookmarkCount: number;
+        subcribe: boolean;
+        imagePath: string | null;
+    };
+}
 
 interface HookFormType {
     id: string;
@@ -15,6 +28,9 @@ interface HookFormType {
 }
 
 export default function LoginForm() {
+    const userInfo = useStore((state) => state.userInfo);
+    const setUserState = useStore((state) => state.setUserState);
+    const [loginState, setLoginState] = useState<LoginResponse | null>(null);
     const router = useRouter();
     const {
         register,
@@ -31,13 +47,44 @@ export default function LoginForm() {
         router.push('/sign-up');
     };
 
-    // const setUserState = useStore((state) => state.setUserState); // 이거 나중에 불러와야된다 유저 정보 저장할 때!
-    const userName = useStore((state) => state.userInfo.name);
+    const userName = userInfo.name;
     useEffect(() => {
         if (userName) {
             console.log('유저이름 :', userName);
         }
     }, [userName]);
+    useEffect(() => {
+        if (userInfo.isLoggedIn) {
+            localStorage.setItem('item', 'true');
+            console.log('🚀 로그인 완료:', userInfo);
+        }
+    }, [userInfo.isLoggedIn]);
+
+    useEffect(() => {
+        if (loginState?.code === 'COMMON200') {
+            const userData = {
+                id: loginState.result.memberId,
+                name: loginState.result.name,
+                isLoggedIn: true,
+                onComming: loginState.result.onComming,
+                alarmTicket: loginState.result.alarmCount,
+                zzimTicket: loginState.result.bookmarkCount,
+                isSubscribe: loginState.result.subcribe,
+                imgUrl: loginState.result.imagePath,
+            };
+
+            setUserState(
+                userData.id,
+                userData.name,
+                userData.onComming,
+                userData.alarmTicket,
+                userData.zzimTicket,
+                userData.isSubscribe,
+                userData.imgUrl
+            );
+            router.push('/');
+        }
+    }, [loginState]);
 
     const onValid: SubmitHandler<HookFormType> = async () => {
         const id = getValues('id');
@@ -59,16 +106,16 @@ export default function LoginForm() {
 
             if (response.code === 'COMMON200') {
                 // 성공 코드 확인
-                // setUserState(
-                //     response.result.id,
-                //     response.result.name,
-                //     response.result.onCommingDate,
-                //     response.result.alarmTicketCnt,
-                //     response.result.zzimTicketCnt,
-                //     response.result.isSubscribe,
-                //     response.result.imgUrl
-                // );
-                router.push('/');
+                setUserState(
+                    response.result.memberId,
+                    response.result.name,
+                    response.result.onComming,
+                    response.result.alarmCount,
+                    response.result.bookmarkCount,
+                    response.result.subcribe,
+                    response.result.imagePath
+                );
+                setLoginState(response);
             } else {
                 console.log('여기2', response.code);
                 checkIdPw(); // 로그인 실패 처리

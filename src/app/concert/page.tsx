@@ -60,7 +60,7 @@ export default function ConcertPage() {
             <div className="grid grid-cols-5 gap-y-[30px] gap-x-[0.55vw]">
                 {data.concerts.map((ticket: Concert) => (
                     <div key={ticket.id} onClick={() => router.push(`concert/${ticket.id}`)}>
-                        <Ticket concert={{ id: ticket.id, url: ticket.url, tag: ticket.tag }}></Ticket>
+                        <Ticket concert={data}></Ticket>
                     </div>
                 ))}
             </div>
