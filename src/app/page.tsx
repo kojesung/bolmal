@@ -3,11 +3,13 @@ import NowBolmal from '@/components/now-bolmal/now-bolmal';
 
 import Profile from '@/components/profile/profile';
 import WeeklyTicke from '@/components/weekly-ticket/weekly-ticket';
+import ViewportSetter from './ViewPortSetter';
 
 export default function Home() {
     return (
         <div>
-            <div className="bg-bg-default flex py-[20px] px-[120px] justify-between">
+            <ViewportSetter />
+            <div className="bg-bg-default flex py-[20px] px-[8.33vw] justify-between gap-[24px]">
                 <Ad></Ad>
                 <Profile></Profile>
             </div>
