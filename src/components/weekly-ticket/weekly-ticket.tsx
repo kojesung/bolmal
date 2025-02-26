@@ -57,21 +57,17 @@ export default function WeeklyTicke() {
                                     <div
                                         onClick={() => router.push(`concert/${item.id}`)}
                                         key={item.id}
-                                        className="p-[20px] flex bg-white w-[39.93vw] rounded-[20px] border-[1px] border-[rgba(240, 240, 240, 1)] h-[240px] justify-between items-center"
+                                        className="p-[1.38vw] flex bg-white w-[39.93vw] rounded-[20px] border-[1px] border-[rgba(240, 240, 240, 1)] justify-between items-center"
                                     >
                                         <Image
                                             src={item.url}
                                             alt={item.id}
-                                            className="bg-black h-[200px] w-[10.41vw] rounded-[10px]"
+                                            className="bg-black w-[10.41vw] rounded-[10px] aspect-[3/4]"
                                         />
                                         <div className="justify-center items-center">{item.id}</div>
                                         <div className="w-[20.27vw] flex flex-col justify-between h-[157px]">
-                                            <div className="h-[38px] w-[8.95vw] border-[2px] rounded-[10px] border-primary justify-center flex items-center">
-                                                <Image
-                                                    src={test1}
-                                                    alt="logo"
-                                                    className="w-[20px] h-[20px] mr-[7px]"
-                                                ></Image>
+                                            <div className="h-[38px] w-fit border-[2px] rounded-[10px] border-primary justify-center flex items-center gap-[7px] p-2">
+                                                <Image src={test1} alt="logo" className="w-[20px] h-[20px]"></Image>
                                                 <span className="text-[15px] font-[700] text-primary">
                                                     멤버십 선예매
                                                 </span>

@@ -18,7 +18,7 @@ export default function Navigation() {
 
     return (
         <>
-            <nav className="fixed px-[120px] z-50 bg-white border-b w-full">
+            <nav className="fixed px-[8.33vw] z-50 bg-white border-b w-full">
                 {isLoginOrSignup ? (
                     <div className="flex items-center justify-center h-[80px]">
                         <Image onClick={handleLogo} src={logo} alt="볼래말래" className="cursor-pointer" />

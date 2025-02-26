@@ -13,10 +13,10 @@ export default function Home() {
                 <Ad></Ad>
                 <Profile></Profile>
             </div>
-            <div className="bg-white px-[120px] py-[30px]">
+            <div className="bg-white px-[8.33vw] py-[30px]">
                 <NowBolmal></NowBolmal>
             </div>
-            <div className="bg-[#FAFAFA] px-[120px] pt-[30px]">
+            <div className="bg-[#FAFAFA] px-[8.33vw] pt-[30px]">
                 <WeeklyTicke></WeeklyTicke>
             </div>
         </div>
