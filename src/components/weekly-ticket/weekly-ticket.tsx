@@ -57,7 +57,7 @@ export default function WeeklyTicke() {
                                     <div
                                         onClick={() => router.push(`concert/${item.id}`)}
                                         key={item.id}
-                                        className="p-[1.38vw] flex bg-white w-[39.93vw] rounded-[20px] border-[1px] border-[rgba(240, 240, 240, 1)] justify-between items-center"
+                                        className="p-[1.38vw] flex bg-white w-[39.93vw] aspect-[575/240] rounded-[20px] border-[1px] border-[rgba(240, 240, 240, 1)] justify-between items-center"
                                     >
                                         <Image
                                             src={item.url}
@@ -76,8 +76,7 @@ export default function WeeklyTicke() {
                                                 2025.01.14 (화) 8PM
                                             </div>
                                             <div className="h-[70px]">
-                                                <div className="text-black text-[18px] font-[700]">{`j-hope Tour 'HOPE ON THE STAG`}</div>
-                                                {/* 글자 몇 이상 넘으면 ...처리 */}
+                                                <div className="text-black text-[18px] font-[700] overflow-hidden whitespace-nowrap text-ellipsis">{`j-hope Tour 'HOPE ON THE STAG글자넘는거테스트테스트으으`}</div>
                                                 <div className="text-[15px] font-500 text-[#AEAEAE]">
                                                     2025.02.28 - 03.02
                                                 </div>
