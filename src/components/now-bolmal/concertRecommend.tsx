@@ -56,7 +56,7 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
         <div className="relative w-full">
             <div className="flex justify-between">
                 <button
-                    className="absolute left-[-2%] top-[136px] -translate-y-1/2 w-[50px] h-[50px] rounded-[50%] z-50 bg-white shadow-[0_0_10px_rgba(99,99,99,0.2)]"
+                    className="absolute left-[-2%] top-[9.44vw] -translate-y-1/2 min-w-10 min-h-10 w-[3.472vw] h-[3.472vw] rounded-[50%] z-50 bg-white shadow-[0_0_10px_rgba(99,99,99,0.2)]"
                     onClick={handlePrev}
                 >
                     ＜
@@ -66,9 +66,9 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                         1024: {
                             slidesPerView: 5,
                         },
-                        1600: {
-                            slidesPerView: 6,
-                        },
+                        // 1600: {
+                        //     slidesPerView: 6,
+                        // },
                     }}
                     modules={[Autoplay]}
                     autoplay={{ delay: 3000 }}
@@ -80,14 +80,14 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                 >
                     {concerts.map((concert) => (
                         <SwiperSlide key={concert.id} className="w-[20%] !flex !justify-center">
-                            <div onClick={() => router.push(`concert/${concert.id}`)} className="w-[234px] p-[15px]">
+                            <div onClick={() => router.push(`concert/${concert.id}`)} className="w-[16.25vw] p-[15px]">
                                 <Ticket concert={concert}></Ticket>
                             </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>
                 <button
-                    className="absolute right-[-2%] top-[136px] -translate-y-1/2 w-[50px] h-[50px] bg-white shadow-[0_0_10px_rgba(99,99,99,0.2)] rounded-[50%] z-50"
+                    className="absolute right-[-2%] top-[9.44vw] -translate-y-1/2 min-w-10 min-h-10 w-[3.472vw] h-[3.472vw] bg-white shadow-[0_0_10px_rgba(99,99,99,0.2)] rounded-[50%] z-50"
                     onClick={handleNext}
                 >
                     ＞
