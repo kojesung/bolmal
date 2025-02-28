@@ -41,14 +41,14 @@ export default function ProfileLogin({ userInfo }: { userInfo: UserInfo }) {
             <div className="rounded-[20px] bg-white w-[19.58vw] h-[4.86vw] border-[1px] border-[#F0F0F0] py-[1.04vw] px-[1.73vw] flex justify-between">
                 <div className="flex">
                     <Image src={defaultImg} alt="알람" className="h-[2.78vw] w-[2.78vw] mr-[1.388vw]"></Image>
-                    <span className="py-[0.62vw]">알람 이용권</span>
+                    <span className="py-[0.62vw] text-[1.25vw]">알람 이용권</span>
                 </div>
                 <span className="py-[0.62vw] text-[1.25vw] font-[700]">{userInfo.alarmTicket}개</span>
             </div>
             <div className="rounded-[20px] bg-white w-[19.58vw] h-[4.86vw] border-[1px] border-[#F0F0F0] py-[1.04vw] px-[1.73vw] flex justify-between">
                 <div className="flex">
                     <Image src={defaultImg} alt="알람" className="h-[2.78vw] w-[2.78vw] mr-[1.388vw]"></Image>
-                    <span className="py-[0.62vw]">찜 이용권</span>
+                    <span className="py-[0.62vw] text-[1.25vw]">찜 이용권</span>
                 </div>
                 <span className="py-[0.62vw] text-[1.25vw] font-[700]">{userInfo.zzimTicket}개</span>
             </div>
