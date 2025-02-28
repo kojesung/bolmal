@@ -10,7 +10,7 @@ import { fetchInstance } from '@/utils/fetchInstance';
 interface ConcertDate {
     startDate: string;
     endDate: string;
-} //test
+}
 
 export interface Concert {
     id: number;
@@ -71,7 +71,7 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                         // },
                     }}
                     modules={[Autoplay]}
-                    autoplay={{ delay: 3000 }}
+                    autoplay={{ delay: 6000 }}
                     loop={true}
                     slidesPerView={5}
                     onSwiper={setSwiper}
