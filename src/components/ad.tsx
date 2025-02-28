@@ -35,7 +35,7 @@ export default function Ad() {
                         <SwiperSlide key={index}>
                             <div className="flex items-center justify-center h-full">
                                 {ad.url ? (
-                                    <Image className="w-[62.08vw] h-[320px]" src={ad.url} alt={ad.id} />
+                                    <Image className="w-[62.08vw] h-[22vw]" src={ad.url} alt={ad.id} />
                                 ) : (
                                     <>없음</>
                                 )}

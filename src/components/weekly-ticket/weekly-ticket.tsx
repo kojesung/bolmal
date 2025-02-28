@@ -45,47 +45,42 @@ export default function WeeklyTicke() {
             <div className="flex justify-between">
                 <button
                     onClick={handlePrev}
-                    className="absolute left-[-2%] top-[50%] -translate-y-1/2 w-[50px] h-[50px] bg-white shadow-[0_0_10px_rgba(99,99,99,0.2)] rounded-[50%] z-50"
+                    className="absolute left-[-2vw] top-[50%] -translate-y-1/2 w-[3.47vw] h-[3.47vw] bg-white shadow-[0_0_10px_rgba(99,99,99,0.2)] rounded-[50%] z-50 flex items-center justify-center"
                 >
                     {'<'}
                 </button>
                 <Swiper modules={[Autoplay]} autoplay={{ delay: 3000 }} slidesPerView={1} onSwiper={setSwiper}>
                     {createGroups().map((group, index) => (
                         <SwiperSlide key={index}>
-                            <div className="grid grid-cols-2 gap-x-[1.527vw] gap-y-[20px]">
+                            <div className="grid grid-cols-2 gap-x-[1.527vw] gap-y-[1.38vw]">
                                 {group.map((item) => (
                                     <div
                                         onClick={() => router.push(`concert/${item.id}`)}
                                         key={item.id}
-                                        className="p-[20px] flex bg-white w-[39.93vw] rounded-[20px] border-[1px] border-[rgba(240, 240, 240, 1)] h-[240px] justify-between items-center"
+                                        className="p-[1.38vw] flex bg-white w-[39.93vw] aspect-[575/240] rounded-[20px] border-[1px] border-[rgba(240, 240, 240, 1)] justify-between items-center"
                                     >
                                         <Image
                                             src={item.url}
                                             alt={item.id}
-                                            className="bg-black h-[200px] w-[10.41vw] rounded-[10px]"
+                                            className="bg-black w-[10.41vw] rounded-[10px] aspect-[3/4]"
                                         />
                                         <div className="justify-center items-center">{item.id}</div>
-                                        <div className="w-[20.27vw] flex flex-col justify-between h-[157px]">
-                                            <div className="h-[38px] w-[8.95vw] border-[2px] rounded-[10px] border-primary justify-center flex items-center">
-                                                <Image
-                                                    src={test1}
-                                                    alt="logo"
-                                                    className="w-[20px] h-[20px] mr-[7px]"
-                                                ></Image>
-                                                <span className="text-[15px] font-[700] text-primary">
+                                        <div className="w-[20.27vw] flex flex-col justify-between h-[10.9vw]">
+                                            <div className="h-[2.64vw] w-fit border-[2px] rounded-[10px] border-primary justify-center flex items-center gap-[0.48vw] p-[0.83vw]">
+                                                <Image src={test1} alt="logo" className="w-[1.38vw] h-[1.38vw]"></Image>
+                                                <span className="text-[1.04vw] font-[700] text-primary">
                                                     멤버십 선예매
                                                 </span>
                                             </div>
-                                            <div className="text-[20px] font-[700] text-primary">
+                                            <div className="text-[1.38vw] font-[700] text-primary">
                                                 2025.01.14 (화) 8PM
                                             </div>
-                                            <div className="h-[70px]">
-                                                <div className="text-black text-[18px] font-[700]">{`j-hope Tour 'HOPE ON THE STAG`}</div>
-                                                {/* 글자 몇 이상 넘으면 ...처리 */}
-                                                <div className="text-[15px] font-500 text-[#AEAEAE]">
+                                            <div className="h-[4.86vw]">
+                                                <div className="text-black text-[1.25vw] font-[700] overflow-hidden whitespace-nowrap text-ellipsis">{`j-hope Tour 'HOPE ON THE STAG글자넘는거테스트테스트으으`}</div>
+                                                <div className="text-[1.04vw] font-500 text-[#AEAEAE]">
                                                     2025.02.28 - 03.02
                                                 </div>
-                                                <div className="text-[15px] font-500 text-[#AEAEAE]">KSPO DOME</div>
+                                                <div className="text-[1.04vw] font-500 text-[#AEAEAE]">KSPO DOME</div>
                                             </div>
                                         </div>
                                     </div>
@@ -96,7 +91,7 @@ export default function WeeklyTicke() {
                 </Swiper>
                 <button
                     onClick={handleNext}
-                    className="absolute right-[-2%] top-[50%] -translate-y-1/2 w-[50px] h-[50px] bg-white shadow-[0_0_10px_rgba(99,99,99,0.2)] rounded-[50%] z-50"
+                    className="absolute right-[-2vw] top-[50%] -translate-y-1/2 w-[3.47vw] h-[3.47vw] bg-white shadow-[0_0_10px_rgba(99,99,99,0.2)] rounded-[50%] z-50 flex items-center justify-center"
                 >
                     {'>'}
                 </button>
