@@ -10,7 +10,7 @@ import { fetchInstance } from '@/utils/fetchInstance';
 interface ConcertDate {
     startDate: string;
     endDate: string;
-} //test
+}
 
 export interface Concert {
     id: number;
