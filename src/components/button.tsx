@@ -21,31 +21,31 @@ const getButtonSize = (size: ButtonSize) => {
     switch (size) {
         case 'small':
             return css`
-                height: 64px;
-                width: 136px;
-                padding: 14px 14px;
-                font-size: 20px;
+                height: 4.44vw;
+                width: 9.44vw;
+                padding: 0.97vw 0.97vw;
+                font-size: 1.38vw;
             `;
         case 'large':
             return css`
-                height: 60px;
+                height: 4.16vw;
                 width: 33.07vw;
-                padding: 14px 14px;
-                font-size: 20px;
+                padding: 0.97vw 0.97vw;
+                font-size: 1.38vw;
             `;
         case 'medium2':
             return css`
-                height: 57px;
+                height: 3.95vw;
                 width: 17.01vw;
-                padding: 14px 14px;
-                font-size: 20px;
+                padding: 0.97vw 0.97vw;
+                font-size: 1.38vw;
             `;
         default:
             return css`
                 width: 18.651vw;
-                height: 60px;
-                padding: 14px 14px;
-                font-size: 20px;
+                height: 4.16vw;
+                padding: 0.97vw 0.97vw;
+                font-size: 1.38vw;
             `;
     }
 };
@@ -71,15 +71,15 @@ const StyledButton = styled.button<StyledButtonProps>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
+    border-radius: 1.38vw;
     font-weight: 700;
     background-color: #ff4869;
     color: white;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
-    gap: 10px;
-    line-height: 24px;
+    gap: 0.69vw;
+    line-height: 1.66vw;
 
     ${({ size }) => getButtonSize(size)}
 

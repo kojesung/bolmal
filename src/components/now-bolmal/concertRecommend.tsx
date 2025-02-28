@@ -71,7 +71,7 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                         // },
                     }}
                     modules={[Autoplay]}
-                    autoplay={{ delay: 3000 }}
+                    autoplay={{ delay: 6000 }}
                     loop={true}
                     slidesPerView={5}
                     onSwiper={setSwiper}

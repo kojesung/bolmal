@@ -22,11 +22,11 @@ export default function Ad() {
     ];
     return (
         <div>
-            <div className="w-[62.08vw] h-[343px]">
+            <div className="w-[62.08vw] h-[23.81vw]">
                 <Swiper
                     onSwiper={setSwiper}
                     onSlideChange={(swiper) => setActiveIdx(swiper.realIndex)}
-                    className="mb-[15px] bg-white rounded-[20px]"
+                    className="mb-[1.04vw] bg-white rounded-[20px]"
                     modules={[Autoplay]}
                     autoplay={{ delay: 3000 }} // 자동재생
                     loop={true} // 반복 여부
@@ -43,15 +43,15 @@ export default function Ad() {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-                <div className="h-[8px] gap-[8px] flex ml-[14px]">
+                <div className="h-[0.55vw] gap-[0.55vw] flex ml-[0.97vw]">
                     {testObj.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => swiper?.slideTo(index)}
-                            className={`h-[8px] bg-[#e9e9e9] ${
+                            className={`h-[0.55vw] bg-[#e9e9e9] ${
                                 swiper?.realIndex === index
-                                    ? 'bg-primary-bg w-[20px] rounded-[100px]'
-                                    : 'bg-gray-300 w-[8px] rounded-[50%]'
+                                    ? 'bg-primary-bg w-[1.38vw] rounded-[100px]'
+                                    : 'bg-gray-300 w-[0.55vw] rounded-[50%]'
                             }`}
                         ></button>
                     ))}
