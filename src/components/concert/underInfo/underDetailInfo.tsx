@@ -22,13 +22,13 @@ export default function DetailInfo({
     description,
 }: DetailInfoProps) {
     const infoItems: UnderInfoItemProps[] = [
-        { label: '공연 제목', value: fullTitle },
-        { label: '공연 일시', value: date },
-        { label: '공연 장소', value: location },
-        { label: '티켓 가격', value: price },
-        { label: '러닝 타임', value: runningTime },
-        { label: '관람 연령', value: ageLimit },
-        { label: '예매 제한', value: ticketLimit },
+        { label: '공연 제목', value: fullTitle || '' },
+        { label: '공연 일시', value: date || '' },
+        { label: '공연 장소', value: location || '' },
+        { label: '티켓 가격', value: price || '' },
+        { label: '러닝 타임', value: runningTime || '' },
+        { label: '관람 연령', value: ageLimit || '' },
+        { label: '예매 제한', value: ticketLimit || '' },
     ];
 
     return (
