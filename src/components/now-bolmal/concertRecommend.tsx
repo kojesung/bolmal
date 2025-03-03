@@ -6,6 +6,10 @@ import { Swiper as SwiperType } from 'swiper';
 import Ticket from '../ticket';
 import { useRouter } from 'next/navigation';
 import { fetchInstance } from '@/utils/fetchInstance';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
 export interface Concert {
     id: number;
@@ -59,16 +63,14 @@ export default function ConcertRecommend({ isLoggedIn }: RecommendSwiperProps) {
                         1024: {
                             slidesPerView: 5,
                         },
-                        // 1600: {
-                        //     slidesPerView: 6,
-                        // },
                     }}
                     modules={[Autoplay]}
                     autoplay={{ delay: 6000 }}
-                    loop={true}
                     slidesPerView={5}
                     onSwiper={setSwiper}
                     spaceBetween={0}
+                    allowSlideNext={true}
+                    allowSlidePrev={true}
                     className="w-full"
                 >
                     {concerts.map((concert) => (
