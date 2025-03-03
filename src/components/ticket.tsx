@@ -21,17 +21,13 @@ export default function Ticket({ concert }: TicketProps) {
                 <div className="p-[0.694vw] border-primary border-[2px] rounded-[10px] w-fit mb-[10px] flex gap-[7px] text-center items-center">
                     <span className="w-[1.38vw] h-[1.38vw]">⏰</span>
                     {/* <Image src={concert.posterUrl} alt="시간" width={20} height={20}></Image> */}
-                    <div className="text-[1.04vw] font-[700] text-primary">
-                        {concert.concertTicketRoundDTOList[0].ticket_round}
-                    </div>
+                    <div className="text-[1.04vw] font-[700] text-primary">{concert.round}</div>
                 </div>
-                <span className="mb-[6px] text-[1.38vw] font-[700] text-primary">
-                    {getFormattedData(concert.concertTicketRoundDTOList[0].ticket_open_date)}
-                </span>
+                <span className="mb-[6px] text-[1.38vw] font-[700] text-primary">{concert.ticketOpenDate}</span>
                 <span className="text-black text-[1.25vw] font-[700] overflow-hidden whitespace-nowrap text-ellipsis">
                     {concert.concertName}
                 </span>
-                <span className="text-[#AEAEAE] text-[1.04vw] font-[500]">{concert.concertDate.endDate}</span>
+                <span className="text-[#AEAEAE] text-[1.04vw] font-[500]">{concert.concertDate}</span>
             </div>
         </div>
     );

@@ -23,11 +23,14 @@ export default function MainInfo({
 }: MainInfoProps) {
     return (
         <div className="flex">
-            <Image
-                src={posterUrl}
-                alt="공연포스터"
-                className="w-[19.44vw] aspect-[280/392] rounded-[10px] bg-black mr-[1.66vw]"
-            ></Image>
+            {posterUrl && (
+                <Image
+                    src={posterUrl}
+                    alt="공연포스터"
+                    className="w-[19.44vw] aspect-[280/392] rounded-[10px] bg-black mr-[1.66vw]"
+                ></Image>
+            )}
+
             <div className="h-[27.22vw] w-[40.83vw] border-[#F0F0F0] border-[1.5px] rounded-[20px] p-[1.38vw] flex flex-col justify-between">
                 <div className="p-[0.69vw]">
                     <div className="w-[6.18vw] h-[2.5vw] border-primary border-[1.5px] rounded-[10px] text-primary font-[700] text-[1.04vw] flex justify-center items-center mb-[1.04vw]">

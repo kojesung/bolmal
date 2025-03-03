@@ -7,20 +7,13 @@ import Ticket from '../ticket';
 import { useRouter } from 'next/navigation';
 import { fetchInstance } from '@/utils/fetchInstance';
 
-interface ConcertDate {
-    startDate: string;
-    endDate: string;
-}
-
 export interface Concert {
     id: number;
     posterUrl: string;
-    concertTicketRoundDTOList: {
-        ticket_round: string;
-        ticket_open_date: string;
-    }[];
+    round: string;
+    ticketOpenDate: string;
     concertName: string;
-    concertDate: ConcertDate;
+    concertDate: string;
 }
 
 interface RecommendSwiperProps {
