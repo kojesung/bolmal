@@ -61,7 +61,7 @@ export default function ConcertDetail() {
                     <>
                         <MainInfo
                             tag={concertInfo.onlineStore === 'INTERPARK' ? '내한 콘서트' : '국내 콘서트'}
-                            title={concertInfo.concertName.split('[')[0].trim()}
+                            title={concertInfo.concertName}
                             nextTicketOpen={concertInfo.ticketOpenInfo}
                             location={concertInfo.concertPlace}
                             date={concertInfo.concertDate}

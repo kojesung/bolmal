@@ -14,7 +14,7 @@ import 'swiper/css/autoplay';
 export interface Concert {
     id: number;
     posterUrl: string;
-    round: string;
+    ticketRound: string;
     ticketOpenDate: string;
     concertName: string;
     concertDate: string;
