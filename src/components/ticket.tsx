@@ -12,7 +12,7 @@ export default function Ticket({ concert }: TicketProps) {
             <Image
                 className="bg-black rounded-[10px] w-[14.16vw] h-fit aspect-[204/272]"
                 src={concert.posterUrl}
-                alt={concert.id.toString()}
+                alt={concert.concertName}
                 unoptimized
                 width={204}
                 height={272}

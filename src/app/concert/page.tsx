@@ -3,28 +3,32 @@
 import DropDown from '@/components/dropdown/dropDown';
 import { Concert } from '@/components/now-bolmal/concertRecommend';
 import Ticket from '@/components/ticket';
+import { fetchInstance } from '@/utils/fetchInstance';
 import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-async function getConcertInfo(page: number) {
-    const res = await fetch(`/api/concerts?page=${page}`);
-    return res.json();
-}
-
-export type SortType = 'latest' | 'popularity' | 'near';
+export type SortType = 'LATEST' | 'TICKET_OPEN' | 'POPULAR';
 
 export default function ConcertPage() {
     const [pageNumber, setPageNumber] = useState<number>(1);
     const [isSelectedNC, setIsSelectedNC] = useState<boolean>(false);
     const [isSelectedKC, setIsSelectedKC] = useState<boolean>(false);
-    const [sortType, setSortType] = useState<SortType>('near');
+    const [sortType, setSortType] = useState<SortType>('TICKET_OPEN');
+
     const { data, isLoading, isError } = useQuery({
-        queryKey: ['pagenatedNum', pageNumber],
-        queryFn: () => getConcertInfo(pageNumber), // 실제 API 호출에는 isSelectedNC, isSelectKC, sortType도 포함해야함
+        queryKey: ['pagenatedNum', pageNumber, 'sortType', sortType],
+        queryFn: async () => {
+            const response = await fetchInstance(
+                `/concerts/?page=${pageNumber}&sortType=${sortType}`,
+                {},
+                // { credentials: 'include' },
+                true
+            );
+            return response.result;
+        },
     });
     const router = useRouter();
-
     if (isLoading) return <div>로딩중...</div>;
     if (isError) return <div>에러</div>;
     return (
@@ -58,9 +62,9 @@ export default function ConcertPage() {
                 <DropDown sortType={sortType} setSortType={setSortType}></DropDown>
             </div>
             <div className="grid grid-cols-5 gap-y-[30px] gap-x-[0.55vw]">
-                {data.concerts.map((ticket: Concert) => (
+                {data.content.map((ticket: Concert) => (
                     <div key={ticket.id} onClick={() => router.push(`concert/${ticket.id}`)}>
-                        <Ticket concert={data}></Ticket>
+                        <Ticket concert={ticket}></Ticket>
                     </div>
                 ))}
             </div>
