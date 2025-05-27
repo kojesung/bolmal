@@ -50,13 +50,11 @@ export default function LoginForm() {
     const userName = userInfo.name;
     useEffect(() => {
         if (userName) {
-            console.log('유저이름 :', userName);
         }
     }, [userName]);
     useEffect(() => {
         if (userInfo.isLoggedIn) {
             localStorage.setItem('item', 'true');
-            console.log('🚀 로그인 완료:', userInfo);
         }
     }, [userInfo.isLoggedIn]);
 
@@ -102,7 +100,6 @@ export default function LoginForm() {
                 },
                 false
             );
-            console.log('전체 응답', getAccessToken()); // 엑세스 토큰 확인
 
             if (response.code === 'COMMON200') {
                 // 성공 코드 확인
@@ -117,7 +114,6 @@ export default function LoginForm() {
                 );
                 setLoginState(response);
             } else {
-                console.log('여기2', response.code);
                 checkIdPw(); // 로그인 실패 처리
             }
         } catch (error) {

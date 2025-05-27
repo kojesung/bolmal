@@ -10,7 +10,6 @@ export const refreshAccessToken = async () => {
         // resposne 응답 boolean으로 왔을 때 에러 던질 곳
         // if (!response.ok) throw new Error('리프레시 실패');
         const newToken = response.headers.get('Access')?.split('Bearer ')[1]; // 헤더에서 엑세스 토큰 가져오기
-        console.log('헤더에서 가져온 토큰', newToken);
         if (!newToken) throw new Error('토큰 재발급 실패');
         setAccessToken(newToken);
         return newToken;

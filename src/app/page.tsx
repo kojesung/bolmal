@@ -1,10 +1,8 @@
 import Ad from '@/components/ad';
 import NowBolmal from '@/components/now-bolmal/now-bolmal';
-
 import Profile from '@/components/profile/profile';
 import WeeklyTicke from '@/components/weekly-ticket/weekly-ticket';
 import ViewportSetter from './ViewPortSetter';
-import KakaoMap from '@/components/kakao-map/kakao-map';
 
 export default function Home() {
     return (
