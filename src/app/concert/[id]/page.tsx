@@ -7,6 +7,7 @@ import TicketingButtons from '@/components/concert/ticketingButton';
 import DetailInfo from '@/components/concert/underInfo/underDetailInfo';
 import { useEffect, useState } from 'react';
 import { fetchInstance } from '@/utils/fetchInstance';
+import Profile from '@/components/profile/profile';
 
 export interface ConcertDetail {
     id: number;
@@ -69,7 +70,6 @@ export default function ConcertDetail() {
                             price={concertInfo.price}
                             posterUrl={test1}
                         />
-                        {/* 나머지 컴포넌트들 */}
                     </>
                 ) : (
                     <div>로딩 중...</div>
@@ -93,7 +93,7 @@ export default function ConcertDetail() {
                     <div>로딩 중...</div>
                 )}
             </div>
-            <div>사이드바</div>
+            <Profile></Profile>
         </div>
     );
 }

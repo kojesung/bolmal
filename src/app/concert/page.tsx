@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 export type SortType = 'LATEST' | 'TICKET_OPEN' | 'POPULAR';
 
 export default function ConcertPage() {
-    const [pageNumber, setPageNumber] = useState<number>(1);
+    const [pageNumber, setPageNumber] = useState<number>(0);
     const [isSelectedNC, setIsSelectedNC] = useState<boolean>(false);
     const [isSelectedKC, setIsSelectedKC] = useState<boolean>(false);
     const [sortType, setSortType] = useState<SortType>('TICKET_OPEN');
@@ -19,15 +19,12 @@ export default function ConcertPage() {
     const { data, isLoading, isError } = useQuery({
         queryKey: ['pagenatedNum', pageNumber, 'sortType', sortType],
         queryFn: async () => {
-            const response = await fetchInstance(
-                `/concerts/?page=${pageNumber}&sortType=${sortType}`,
-                {},
-                // { credentials: 'include' },
-                true
-            );
+            const response = await fetchInstance(`/concerts/?page=${pageNumber}&sortType=${sortType}`, {}, true);
             return response.result;
         },
     });
+
+    console.log(data, 'durl');
     const router = useRouter();
     if (isLoading) return <div>로딩중...</div>;
     if (isError) return <div>에러</div>;
@@ -38,7 +35,7 @@ export default function ConcertPage() {
                     <button
                         onClick={() => {
                             setIsSelectedNC((prev) => !prev);
-                            setPageNumber(1);
+                            setPageNumber(0);
                         }}
                         className={`w-[7.56vw] h-[38px] rounded-[100px] ${
                             isSelectedNC ? 'bg-primary text-white' : 'bg-[#F7F7F7] text-[#AEAEAE]'
@@ -50,7 +47,7 @@ export default function ConcertPage() {
                         onClick={() => {
                             // 처음에는 onClick={(prev) => setIsSelectedNC(!prev)} 이런 실수를 했는데 여기서의 prev는 onClick 함수의 매개변수로 React의 이벤트 객체, 이정 상태값 가져오려면 setState의 매개변수에 접근해야했음
                             setIsSelectedKC((prev) => !prev);
-                            setPageNumber(1);
+                            setPageNumber(0);
                         }}
                         className={`w-[7.56vw] h-[38px] rounded-[100px] ${
                             isSelectedKC ? 'bg-primary text-white' : 'bg-[#F7F7F7] text-[#AEAEAE]'
@@ -71,10 +68,10 @@ export default function ConcertPage() {
             <div className="my-[60px] text-center">
                 {Array.from({ length: data?.totalPages || 0 }, (_, index) => (
                     <button
-                        onClick={() => setPageNumber(index + 1)}
+                        onClick={() => setPageNumber(index)}
                         key={index + 1}
                         className={`gap-[1.18vw] w-[30px] h-[30px] ${
-                            pageNumber == index + 1
+                            pageNumber == index
                                 ? 'rounded-[50%] bg-primary text-white font-[700] text-[15px]'
                                 : 'text-[#686868] text-[15px] font-[500]'
                         }`}
