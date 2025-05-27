@@ -20,9 +20,6 @@ export default function Home() {
             <div className="bg-[#FAFAFA] px-[8.33vw] pt-[30px]">
                 <WeeklyTicke></WeeklyTicke>
             </div>
-            <div>
-                <KakaoMap></KakaoMap>
-            </div>
         </div>
     );
 }
