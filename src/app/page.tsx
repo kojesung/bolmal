@@ -4,6 +4,7 @@ import NowBolmal from '@/components/now-bolmal/now-bolmal';
 import Profile from '@/components/profile/profile';
 import WeeklyTicke from '@/components/weekly-ticket/weekly-ticket';
 import ViewportSetter from './ViewPortSetter';
+import KakaoMap from '@/components/kakao-map/kakao-map';
 
 export default function Home() {
     return (
@@ -18,6 +19,9 @@ export default function Home() {
             </div>
             <div className="bg-[#FAFAFA] px-[8.33vw] pt-[30px]">
                 <WeeklyTicke></WeeklyTicke>
+            </div>
+            <div>
+                <KakaoMap></KakaoMap>
             </div>
         </div>
     );

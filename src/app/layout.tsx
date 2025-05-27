@@ -17,9 +17,13 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
+                <script
+                    type="text/javascript"
+                    src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID}`}
+                ></script>
                 <QueryProvider>
                     <AuthProvider>
-                        <Navigation></Navigation>
+                        <Navigation />
                         {children}
                     </AuthProvider>
                 </QueryProvider>
