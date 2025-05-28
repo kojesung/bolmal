@@ -5,8 +5,10 @@ interface TicketingButtonsProps {
 
 export default function TicketingButtons({ interParkUrl, yes24Url }: TicketingButtonsProps) {
     const handleOpenNewTab = (url?: string) => {
-        if (url) {
+        if (url !== '티켓팅 사이트 링크 미정') {
             window.open(url, '_blank');
+        } else {
+            alert('현재 보고게신 콘서트는 티케팅 사이트 링크가 제공되고 있지 않는 상태입니다. 🥲');
         }
     };
 

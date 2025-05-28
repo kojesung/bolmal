@@ -39,7 +39,7 @@ export default function MainInfo({
                     <div className="flex flex-col">
                         <span className="mb-[0.69vw] font-[700] text-[1.73vw]">{title}</span>
                         <div className="text-primary text-[1.38vw] font-[700]">
-                            <span>🕓 1차 티켓 오픈</span>
+                            <span></span>
                             <span>{nextTicketOpen}</span>
                         </div>
                     </div>
