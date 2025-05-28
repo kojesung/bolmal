@@ -9,17 +9,33 @@ import Image from 'next/image';
 import { Autoplay } from 'swiper/modules';
 import { useState } from 'react';
 import { Swiper as SwiperType } from 'swiper';
+import { fetchInstance } from '@/utils/fetchInstance';
+import { useQuery } from '@tanstack/react-query';
 
 export default function Ad() {
     const [swiper, setSwiper] = useState<SwiperType | null>(null);
     const [activeIdx, setActiveIdx] = useState<number>(0);
-    const testObj = [
-        { id: '1', url: test1 },
-        { id: '2', url: test1 },
-        { id: '3', url: test1 },
-        { id: '4', url: test1 },
-        { id: '5', url: test1 },
-    ];
+
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ['ad'],
+        queryFn: async () => {
+            const response = await fetchInstance(`/home/advertisement`, {}, true);
+            return response.result.result;
+        },
+    });
+
+    if (isLoading) {
+        return <div>로딩중</div>;
+    }
+
+    if (isError) {
+        return <div>에러가 발생했습니다</div>;
+    }
+
+    if (!data || data.length === 0) {
+        return <div>광고 데이터가 없습니다</div>;
+    }
+
     return (
         <div>
             <div className="w-[62.08vw] h-[23.81vw]">
@@ -28,14 +44,20 @@ export default function Ad() {
                     onSlideChange={(swiper) => setActiveIdx(swiper.realIndex)}
                     className="mb-[1.04vw] bg-white rounded-[20px]"
                     modules={[Autoplay]}
-                    autoplay={{ delay: 3000 }} // 자동재생
-                    loop={true} // 반복 여부
+                    autoplay={{ delay: 3000 }}
+                    loop={true}
                 >
-                    {testObj.map((ad, index) => (
-                        <SwiperSlide key={index}>
+                    {data.map((ad: any) => (
+                        <SwiperSlide key={ad.id}>
                             <div className="flex items-center justify-center h-full">
-                                {ad.url ? (
-                                    <Image className="w-[62.08vw] h-[22vw]" src={ad.url} alt={ad.id} />
+                                {ad.imageUrl ? (
+                                    <Image
+                                        className="w-[62.08vw] h-[22vw]"
+                                        src={ad.imageUrl}
+                                        alt={ad.id}
+                                        width={800}
+                                        height={400}
+                                    />
                                 ) : (
                                     <>없음</>
                                 )}
@@ -43,17 +65,18 @@ export default function Ad() {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+
                 <div className="h-[0.55vw] gap-[0.55vw] flex ml-[0.97vw]">
-                    {testObj.map((_, index) => (
+                    {data.map((_: any, index: number) => (
                         <button
                             key={index}
                             onClick={() => swiper?.slideTo(index)}
-                            className={`h-[0.55vw] bg-[#e9e9e9] ${
-                                swiper?.realIndex === index
+                            className={`h-[0.55vw] ${
+                                activeIdx === index
                                     ? 'bg-primary-bg w-[1.38vw] rounded-[100px]'
                                     : 'bg-gray-300 w-[0.55vw] rounded-[50%]'
                             }`}
-                        ></button>
+                        />
                     ))}
                 </div>
             </div>

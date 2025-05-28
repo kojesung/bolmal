@@ -7,8 +7,6 @@ export default function useKakaoLogin() {
     const setUserState = useStore((state) => state.setUserState);
 
     const handleKakaoLogin = async (name: string, email: string) => {
-        //name과 email로 서버에 fetch하는 내용
-        //이 밑은 임시로 로그인하도록 구현
         const userInfoBody = {
             name: name,
             email: email,

@@ -12,9 +12,9 @@ export default function DropDown({ sortType, setSortType }: DropDownProps) {
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const sortTypeText = {
-        near: '티켓오픈 가까운 순',
-        popularity: '인기순',
-        latest: '최신 등록순',
+        TICKET_OPEN: '티켓오픈 가까운 순',
+        POPULAR: '인기순',
+        LATEST: '최신 등록순',
     };
 
     useClickOutside(dropdownRef, setView);
@@ -34,11 +34,11 @@ export default function DropDown({ sortType, setSortType }: DropDownProps) {
                         <li className="flex justify-center">
                             <button
                                 className={`flex items-center justify-center h-[36px] bg-primary rounded-[7px] w-[9.93vw] font-[700] text-[15px] ${
-                                    sortType === 'near' ? 'bg-primary text-white' : 'bg-white text-primary'
+                                    sortType === 'TICKET_OPEN' ? 'bg-primary text-white' : 'bg-white text-primary'
                                 }`}
                                 onClick={(e) => {
                                     e.stopPropagation(); // 상위 div에 setView(true)가 있어서 이벤트 버블링 방지 목적
-                                    setSortType('near');
+                                    setSortType('TICKET_OPEN');
                                     setView(false);
                                 }}
                             >
@@ -48,11 +48,11 @@ export default function DropDown({ sortType, setSortType }: DropDownProps) {
                         <li className="flex justify-center">
                             <button
                                 className={`flex items-center justify-center h-[36px] bg-primary rounded-[7px] w-[9.93vw] font-[700] text-[15px] ${
-                                    sortType === 'popularity' ? 'bg-primary text-white' : 'bg-white text-primary'
+                                    sortType === 'POPULAR' ? 'bg-primary text-white' : 'bg-white text-primary'
                                 }`}
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    setSortType('popularity');
+                                    setSortType('POPULAR');
                                     setView(false);
                                 }}
                             >
@@ -62,11 +62,11 @@ export default function DropDown({ sortType, setSortType }: DropDownProps) {
                         <li className="flex justify-center">
                             <button
                                 className={`flex items-center justify-center h-[36px] bg-primary rounded-[7px] w-[9.93vw] font-[700] text-[15px] ${
-                                    sortType === 'latest' ? 'bg-primary text-white' : 'bg-white text-primary'
+                                    sortType === 'LATEST' ? 'bg-primary text-white' : 'bg-white text-primary'
                                 }`}
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    setSortType('latest');
+                                    setSortType('LATEST');
                                     setView(false);
                                 }}
                             >
